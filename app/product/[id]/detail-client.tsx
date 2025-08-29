@@ -16,20 +16,20 @@ function formatPrice(value: number) {
 }
 
 export default function ProductDetailClient({ id }: { id: string }) {
-  const productUrl = `${API_BASE}/api/products/${id}`
-  const reviewsUrl = `${API_BASE}/api/reviews/${id}`
+  const productUrl = `/api/products/${id}`
+  const reviewsUrl = `/api/reviews/${id}`
 
   const {
     data: product,
     error: productError,
     isLoading: loadingProduct,
-  } = useSWR<Product>(productUrl, (url) => jsonFetcher<Product>(url))
+  } = useSWR<Product>(productUrl, (url: string) => jsonFetcher<Product>(url))
 
   const {
     data: reviews,
     error: reviewsError,
     isLoading: loadingReviews,
-  } = useSWR<Review[]>(reviewsUrl, (url) => jsonFetcher<Review[]>(url))
+  } = useSWR<Review[]>(reviewsUrl, (url: string) => jsonFetcher<Review[]>(url))
 
   const [form, setForm] = useState<Review>({ username: "", rating: 5, comment: "" })
   const [submitting, setSubmitting] = useState(false)

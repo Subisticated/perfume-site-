@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
 
@@ -10,7 +10,7 @@ export function Navbar() {
   return (
     <header className="w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
-        <Link to="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span
             className={cn("rounded bg-fuchsia-600 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white")}
             aria-hidden="true"
@@ -21,7 +21,7 @@ export function Navbar() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          <Link to="/" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
+          <Link href="/" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
             Home
           </Link>
           <a href="#collections" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
@@ -60,7 +60,7 @@ export function Navbar() {
         <div className="border-t md:hidden">
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">
             <Link
-              to="/"
+              href="/"
               className="rounded px-2 py-2 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
               onClick={() => setOpen(false)}
             >

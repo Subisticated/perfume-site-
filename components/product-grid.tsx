@@ -2,11 +2,12 @@
 
 import useSWR from "swr"
 import type { Product } from "@/lib/types"
-import { API_BASE, jsonFetcher } from "@/lib/fetcher"
+import { jsonFetcher } from "@/lib/fetcher"
 import { ProductCard } from "./product-card"
 
 export function ProductGrid() {
-  const { data, error, isLoading } = useSWR<Product[]>(`${API_BASE}/api/products`, (url) => jsonFetcher<Product[]>(url))
+  // Fetch products from the Next.js API, which gets data from MongoDB
+  const { data, error, isLoading } = useSWR<Product[]>(`/api/products`, (url: string) => jsonFetcher<Product[]>(url))
 
   if (isLoading) {
     return (

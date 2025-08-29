@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import type { Product } from "@/lib/types"
 
 function truncate(text: string, max = 50) {
@@ -21,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link
-      to={`/product/${product.id}`}
+      href={`/product/${product.id}`}
       className="group block rounded-lg border bg-white p-3 shadow-sm transition hover:shadow-md"
     >
       <div className="overflow-hidden rounded-md">
