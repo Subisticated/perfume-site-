@@ -17,7 +17,7 @@ function formatPrice(value: number) {
 }
 
 export function ProductCard({ product }: { product: Product }) {
-  const image = product?.images?.[0] || "/elegant-perfume-bottle.png"
+  const image = product?.imageBase64?.[0] || product?.images?.[0] || "/elegant-perfume-bottle.png"
 
   return (
     <Link

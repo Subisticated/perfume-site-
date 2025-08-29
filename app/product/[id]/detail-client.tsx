@@ -88,9 +88,9 @@ export default function ProductDetailClient({ id }: { id: string }) {
         {/* Gallery */}
         <div className="space-y-3">
           <div className="grid grid-cols-2 gap-3">
-            {(product.images?.length ? product.images : ["/elegant-perfume-bottle.png", "/fragrance-detail.png"])
+            {(product.imageBase64?.length ? product.imageBase64 : ["/elegant-perfume-bottle.png", "/fragrance-detail.png"])
               .slice(0, 4)
-              .map((src, i) => (
+              .map((src: string, i: number) => (
                 <div key={i} className="overflow-hidden rounded-lg border">
                   <img
                     src={src || "/placeholder.svg"}

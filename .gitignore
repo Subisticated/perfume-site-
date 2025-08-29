@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# mock data seed script
+pages/api/seed.ts
+
+# exclude public images
+public/images/

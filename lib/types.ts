@@ -5,6 +5,7 @@ export type Product = {
   price: number
   sizes?: string[]
   images?: string[]
+  imageBase64?: string[]
 }
 
 export type Review = {

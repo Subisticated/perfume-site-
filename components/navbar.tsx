@@ -1,22 +1,31 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
   const [open, setOpen] = useState(false)
+  const [logo, setLogo] = useState<string>("/images/logo.png")
+
+  useEffect(() => {
+    fetch("/api/logo")
+      .then(res => res.json())
+      .then(data => {
+        if (data.logoBase64) setLogo(data.logoBase64)
+      })
+      .catch(() => {})
+  }, [])
 
   return (
     <header className="w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
         <Link href="/" className="flex items-center gap-2">
-          <span
-            className={cn("rounded bg-fuchsia-600 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-white")}
-            aria-hidden="true"
-          >
-            PS
-          </span>
+          <img
+            src={logo}
+            alt="Perfume Shop Logo"
+            className="h-8 w-8 rounded bg-fuchsia-600"
+          />
           <span className="text-lg font-semibold text-slate-900">Perfume Shop</span>
         </Link>
 
@@ -24,12 +33,6 @@ export function Navbar() {
           <Link href="/" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
             Home
           </Link>
-          <a href="#collections" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
-            Collections
-          </a>
-          <a href="#offers" className="text-sm text-slate-700 transition-colors hover:text-slate-900">
-            Offers
-          </a>
         </nav>
 
         <button
@@ -66,20 +69,6 @@ export function Navbar() {
             >
               Home
             </Link>
-            <a
-              href="#collections"
-              className="rounded px-2 py-2 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
-              onClick={() => setOpen(false)}
-            >
-              Collections
-            </a>
-            <a
-              href="#offers"
-              className="rounded px-2 py-2 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-slate-900"
-              onClick={() => setOpen(false)}
-            >
-              Offers
-            </a>
           </nav>
         </div>
       )}
